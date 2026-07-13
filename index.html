@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brokerage Folder Reorganization</title>
+<style>
+  :root{
+    --blue:#0b2a4a; --blue2:#123c66; --gold:#c9a03b; --gold-soft:#e7cf8f;
+    --ink:#1c2530; --muted:#5b6675; --line:#e2e6ec; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:44px 0 38px;
+         border-bottom:4px solid var(--gold)}
+  header .wrap{padding-bottom:0}
+  .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--gold-soft);font-weight:700;margin:0 0 8px}
+  h1{margin:0;font-size:32px;line-height:1.15;font-weight:800}
+  .sub{margin:12px 0 0;color:#c8d4e2;font-size:16px;max-width:640px}
+  .meta{margin-top:18px;font-size:13px;color:#9db0c6}
+  section{margin-top:38px}
+  h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:800;
+     border-bottom:2px solid var(--gold);display:inline-block;padding-bottom:6px;margin:0 0 18px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center}
+  .stat .num{font-size:26px;font-weight:800;color:var(--blue)}
+  .stat .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative}
+  .card .n{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.08em}
+  .card h3{margin:2px 0 6px;font-size:17px;color:var(--blue);font-weight:800}
+  .card p{margin:0;font-size:13.5px;color:var(--muted)}
+  .card .owner{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--blue2);
+               background:#eef3f9;border:1px solid #dbe4ef;border-radius:20px;padding:3px 10px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+        border-radius:12px;overflow:hidden;font-size:13.5px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--blue);color:#fff;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--blue)}
+  .rules{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .rules li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);
+            border-radius:8px;padding:12px 16px;font-size:14px}
+  .rules li b{color:var(--blue)}
+  .timeline{display:grid;gap:12px}
+  .phase{display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--card);border:1px solid var(--line);
+          border-radius:12px;padding:14px 18px;align-items:start}
+  .phase .when{font-weight:800;color:var(--gold);font-size:13px}
+  .phase h4{margin:0 0 3px;font-size:15px;color:var(--blue)}
+  .phase p{margin:0;font-size:13px;color:var(--muted)}
+  .flag{background:#fff8e8;border:1px solid var(--gold-soft);border-radius:10px;padding:14px 18px;font-size:13.5px;color:#6b5a26}
+  .flag b{color:#8a6d1e}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}
+    .phase{grid-template-columns:1fr}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Global Brand &amp; Export Development</p>
+    <h1>Brokerage Folder Reorganization</h1>
+    <p class="sub">One shared home per file. Organized by what a document is, never by who works on it.
+       People and territories change; vendors, retailers, and functions stay put.</p>
+    <p class="meta">Sponsor: Felix Villa &nbsp;|&nbsp; Domestic lead: Jeff Niedholdt &nbsp;|&nbsp; Technical owner: Nikita Bahmet &nbsp;|&nbsp; Updated Jul 13, 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>Why we are doing this</h2>
+    <p style="margin-top:-4px;color:var(--muted);max-width:720px">The Brokerage library grew for years with no rules. Duplicates everywhere, files buried under
+    old rep names, nobody sure where the current version lives. This resets it to a clean, numbered
+    structure with one named owner per folder who keeps it tidy.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">77,572</div><div class="lbl">files inventoried</div></div>
+      <div class="stat"><div class="num">175.6 GB</div><div class="lbl">total size</div></div>
+      <div class="stat"><div class="num">8%</div><div class="lbl">touched in 2026 (6,218 live files)</div></div>
+      <div class="stat"><div class="num">1,153</div><div class="lbl">duplicate groups mapped</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The new structure &amp; owners</h2>
+    <div class="cards">
+      <div class="card"><div class="n">1</div><h3>VENDORS</h3><p>One folder per supplier we represent. Existing standard subfolders kept (Brand Materials, Business Plan, Finance, Toolbox, and the rest).</p><span class="owner">Becca + Sandra</span></div>
+      <div class="card"><div class="n">2</div><h3>RETAILERS</h3><p>One folder per retailer. All category reviews, contacts, and promo work live here, shared, no matter which rep owns the account.</p><span class="owner">Taylor</span></div>
+      <div class="card"><div class="n">3</div><h3>DISTRIBUTORS</h3><p>KeHE, UNFI, DOT, DPI, GFI: contacts, policies and programs, portals, EDI. The only home for distributor docs.</p><span class="owner">Giovanni</span></div>
+      <div class="card"><div class="n">4</div><h3>SALES &amp; KPI</h3><p>Dashboards, reports, pipeline, recurring data drops (K-Solve, sell-by, Power BI) by fiscal year. Never by retailer or vendor.</p><span class="owner">Jeff / Taylor</span></div>
+      <div class="card"><div class="n">5</div><h3>INTERNAL MEETINGS</h3><p>Department and division meetings, monthly reviews: by year, then date.</p><span class="owner">Taylor</span></div>
+      <div class="card"><div class="n">6</div><h3>TRADE SHOWS</h3><p>Fancy Food, KeHE shows, Expo: by show, then year.</p><span class="owner">Sandra</span></div>
+      <div class="card"><div class="n">7</div><h3>TRAINING &amp; SOP</h3><p>All training: manuals, standard operating procedures, courses, onboarding and offboarding.</p><span class="owner">Alexis</span></div>
+      <div class="card"><div class="n">8</div><h3>OPERATIONS</h3><p>POs, deductions, EDI how-tos, launch process.</p><span class="owner">Giovanni</span></div>
+      <div class="card"><div class="n">+</div><h3>WORKSPACES / _ARCHIVE</h3><p>Optional per-person scratch (not source of truth) and the frozen old tree, former vendors, and departed reps.</p><span class="owner">No owner by design</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The five rules</h2>
+    <ul class="rules">
+      <li><b>One home per file.</b> Links or shortcuts elsewhere, never copies.</li>
+      <li><b>No dates in filenames</b> for living docs. Use SharePoint version history and edit in place.</li>
+      <li><b>Templates &amp; forms live inside each main folder</b> in a "Templates &amp; Forms" subfolder. Copy out and rename the moment you use one.</li>
+      <li><b>Drafts stay in personal OneDrive or WORKSPACES,</b> not the shared tree.</li>
+      <li><b>Every top-level folder has one named owner</b> who sweeps it quarterly.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Old location &rarr; new location</h2>
+    <table>
+      <tr><th>If you used to go to&hellip;</th><th>Now go to&hellip;</th></tr>
+      <tr><td>00 KeHE / VENDORS / (brand)</td><td><b>1_VENDORS</b> / (brand) - same subfolders inside</td></tr>
+      <tr><td>00 KeHE / VENDORS / ZXX NO LONGER REPRESENT</td><td>_ARCHIVE / FORMER VENDORS</td></tr>
+      <tr><td>00 KeHE / RETAILERS / (retailer)</td><td><b>2_RETAILERS</b> / (retailer)</td></tr>
+      <tr><td>00 KeHE / rep folders (CMUNOZ, CMUYS, TBORDELON, JLEVY) / RETAILERS</td><td><b>2_RETAILERS</b> / (retailer) - all regions merged, one folder per retailer</td></tr>
+      <tr><td>00 KeHE / rep folders / everything else</td><td>_ARCHIVE / FORMER EMPLOYEES, or ask the folder owner</td></tr>
+      <tr><td>00 KeHE / SALES</td><td><b>4_SALES &amp; KPI</b></td></tr>
+      <tr><td>00 KeHE / TRADE SHOWS</td><td><b>6_TRADE SHOWS</b></td></tr>
+      <tr><td>00 KeHE / KeHE MARKETING, KeHE OPERATIONS</td><td><b>3_DISTRIBUTORS</b> / KEHE</td></tr>
+      <tr><td>00 UNFI, DOT, DPI, GFI, WORLD MARKET, PERFORMANCE FOODSERVICE</td><td><b>3_DISTRIBUTORS</b> / (that distributor)</td></tr>
+      <tr><td>00 GLOBAL / WEEKLY MEETING, MONTHLY MEETING</td><td><b>5_INTERNAL MEETINGS</b></td></tr>
+      <tr><td>00 GLOBAL / PBI, SALES, TRACKER SHEETS, ITEM LIST, PIPEDRIVE, RANGE ME</td><td><b>4_SALES &amp; KPI</b></td></tr>
+      <tr><td>00 GLOBAL / TRAINING, SOPs, courses, on/off-boarding</td><td><b>7_TRAINING &amp; SOP</b></td></tr>
+      <tr><td>00 GLOBAL / HOW-TO GUIDES, LAUNCH PROCESS, EDI</td><td><b>8_OPERATIONS</b></td></tr>
+      <tr><td>00 GLOBAL / MARKETING, template folders, any blank template or form</td><td><b>Templates &amp; Forms</b> subfolder inside the matching main folder - no top-level templates folder</td></tr>
+      <tr><td>KSOLVE REPORTS, SELL BY REPORTS, Power BI Updates</td><td><b>4_SALES &amp; KPI</b> / (report type)</td></tr>
+      <tr><td>Anything older than this year</td><td>_ARCHIVE / pre-2026 - same structure inside, search still finds it</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin-top:12px">Can't find something? Search the library first (it covers _ARCHIVE too), then ask the folder owner. Do not recreate a folder that looks missing - ask.</p>
+  </section>
+
+  <section>
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="phase"><div class="when">Fri Jul 17</div><div><h4>Phase 1 - Sign-off</h4><p>Structure and owners locked with Jeff. Owners name any remaining subfolder conventions.</p></div></div>
+      <div class="phase"><div class="when">Mon-Wed<br>Jul 20-22</div><div><h4>Phase 2 - Move the live set</h4><p>The 6,218 files touched in 2026 move into the new tree, guided by the move manifest.</p></div></div>
+      <div class="phase"><div class="when">Thu Jul 23</div><div><h4>Cutover</h4><p>New structure goes live. Announcement + this old-to-new map pinned in Teams.</p></div></div>
+      <div class="phase"><div class="when">Fri Jul 31</div><div><h4>Phase 3 - Archive sweep</h4><p>Everything pre-2026 moved wholesale into _ARCHIVE, structure preserved.</p></div></div>
+      <div class="phase"><div class="when">Mon Aug 3</div><div><h4>Old tree retired</h4><p>The legacy layout comes down. One library, one set of rules.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Open item</h2>
+    <div class="flag"><b>Brand Management re-sort (87 files).</b> The old "00 GLOBAL / BRAND MANAGEMENT" folder was a catch-all mixing new-business leads, trade-show materials, industry reports, contract templates, and training. Those are being reviewed and split into their correct new homes before the Phase 2 moves, rather than dumped into one folder.</div>
+  </section>
+
+  <footer>
+    Global Brand &amp; Export Development &nbsp;|&nbsp; Brokerage library reorganization &nbsp;|&nbsp; Internal reference. Structure finalized Jul 13, 2026.
+  </footer>
+
+</div>
+</body>
+</html>
